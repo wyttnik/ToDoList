@@ -2,6 +2,7 @@ package com.example.todolist.adapter
 
 import android.content.Context
 import android.graphics.Paint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,18 +20,29 @@ class ItemAdapter(private val context: Context, private val dataset: List<ToDoIt
         val checkBox:CheckBox = view.findViewById(R.id.checkBox)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.todo_item, parent,false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ItemAdapter.ItemViewHolder {
+        Log.d("testonCreate", "Created")
+        return ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.todo_item, parent,false))
+    }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
+        Log.d("testonBind", "Bound! " + item.checkStatus)
         holder.textView.text = item.action
-        holder.checkBox.setOnCheckedChangeListener {_, isChecked ->
-            if (isChecked) holder.textView.paintFlags = holder.textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-            else holder.textView.paintFlags = holder.textView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
 
+        holder.checkBox.setOnClickListener {
+            item.checkStatus = !item.checkStatus
+            if (item.checkStatus) holder.textView.paintFlags = holder.textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            else holder.textView.paintFlags = holder.textView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
+        holder.checkBox.isChecked = item.checkStatus
+        if (item.checkStatus) holder.textView.paintFlags = holder.textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        else holder.textView.paintFlags = holder.textView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount():Int {
+        Log.d("testonItemCount", "Counted")
+        return dataset.size
+    }
+
 }
