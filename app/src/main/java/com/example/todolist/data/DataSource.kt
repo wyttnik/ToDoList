@@ -2,68 +2,12 @@ package com.example.todolist.data
 
 import com.example.todolist.model.ToDoItem
 
-class DataSource {
-    fun loadToDoItems() = mutableListOf(
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid"),
-        ToDoItem("Try too hard"),
-        ToDoItem("Get so far"),
-        ToDoItem("Go crazy"),
-        ToDoItem("Go stupid")
+object DataSource {
+    fun loadToDoItems():MutableList<ToDoItem> {
+        toDoItems.add(ToDoItem("Try too hard"))
+        toDoItems.add(ToDoItem("Get so far"))
+        return toDoItems
+    }
 
-    )
+    val toDoItems:MutableList<ToDoItem> = mutableListOf()
 }

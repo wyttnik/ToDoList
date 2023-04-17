@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.TasksListFragment">
+
+    <TextView
+        android:id="@+id/item_overall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
+        tools:text="Doing time" />
+
+    <TextView
+        android:id="@+id/item_details_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_overall"
+        android:layout_marginTop="30dp"
+        android:text="Detailed Information:"
+        android:textStyle="italic|bold"/>
+
+    <TextView
+        android:id="@+id/item_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:justificationMode="inter_word"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_details_label"
+        tools:text="Doing timeadadsssssssssssfsfsfsfsfsfsf
+        ssssasdasdadaxzsfsfsfs
+        sfsfsffsfssfscvxcv[pwoeprowperopworpwrwrxvxkvxkv;kxv;xkv;" />
+</androidx.constraintlayout.widget.ConstraintLayout>
