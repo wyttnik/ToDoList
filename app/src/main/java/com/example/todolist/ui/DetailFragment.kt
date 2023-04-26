@@ -1,25 +1,32 @@
-package com.example.todolist.fragments
+package com.example.todolist.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.example.todolist.ToDoApplication
 import com.example.todolist.databinding.FragmentDetailBinding
+import com.example.todolist.viewmodels.ToDoListViewModel
+import com.example.todolist.viewmodels.ToDoListViewModelFactory
 
 class DetailFragment : Fragment() {
+    //private val navigationArgs: DetailFragmentArgs by navArgs()
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var ovInfo:String
-    private lateinit var detInfo:String
+    private val viewModel: ToDoListViewModel by activityViewModels {
+        ToDoListViewModelFactory(
+            (activity?.application as ToDoApplication).database.toDoDao()
+        )
+    }
+    private var id = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            ovInfo = it.getString("overallInfo").toString()
-            detInfo = it.getString("details").toString()
+            id = it.getInt("toDoAction_id")
         }
     }
 
@@ -33,8 +40,11 @@ class DetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.itemOverall.text = ovInfo
-        binding.itemDetails.text = detInfo
+        //id = navigationArgs.actionId
+        viewModel.retrieveAction(id).observe(viewLifecycleOwner){
+            binding.itemOverall.text = it.action
+            binding.itemDetails.text = it.detailedInfo
+        }
     }
 
     override fun onDestroyView() {
